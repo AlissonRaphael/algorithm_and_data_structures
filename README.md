@@ -3,6 +3,9 @@
 ![GitHub](https://img.shields.io/github/license/AlissonRaphael/algorithm_and_data_structures)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mypy)
 
+
+This repository contains a series of algorithms: graphs, trees, linked lists, ordering, stacks, rows, decks, etc. implemented in python and without libraries.
+
 ## Contents
 - [Installation](#installation)
 - [Contact](#contact)
