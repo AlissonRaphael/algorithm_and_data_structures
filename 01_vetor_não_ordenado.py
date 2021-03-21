@@ -29,6 +29,16 @@ class VetorNaoOrdenado:
         return i
     return -1
 
+  def excluir(self, valor):
+    posicao = self.pesquisar(valor)
+    if posicao == -1:
+      return -1
+    else:
+      for i in range(posicao, self.ultima_posicao):
+        self.valores[i] = self.valores[i+1]
+      
+      self.ultima_posicao -= 1
+
 
 vetor = VetorNaoOrdenado(5)
 
@@ -43,3 +53,8 @@ vetor.insere(4)
 print(vetor.pesquisar(8))
 print(vetor.pesquisar(11)) # pior caso: não existe no vetor.
 print(vetor.pesquisar(2)) # melhor caso: na primeira posição.
+
+
+vetor.imprime()
+vetor.excluir(3)
+vetor.imprime()
