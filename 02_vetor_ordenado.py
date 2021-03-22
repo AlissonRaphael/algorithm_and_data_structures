@@ -48,6 +48,17 @@ class VetorNaoOrdenado:
       if i == self.ultima_posicao:
         return -1
 
+  # BigO => O(n)
+  def excluir(self, valor):
+    posicao = self.pesquisar(valor)
+    if posicao == -1:
+      return -1
+    else:
+      for i in range(posicao, self.ultima_posicao):
+        self.valores[i] = self.valores[i+1]
+      
+      self.ultima_posicao -= 1
+
 
 vetor = VetorNaoOrdenado(5)
 
@@ -61,3 +72,7 @@ vetor.imprime()
 print(vetor.pesquisar(9))
 print(vetor.pesquisar(11)) # pior caso: não existe no vetor.
 print(vetor.pesquisar(1)) # # melhor caso: na primeira posição.
+
+vetor.excluir(3)
+vetor.imprime()
+print(vetor.excluir(13))
