@@ -14,6 +14,7 @@ class VetorNaoOrdenado:
       for i in range(self.ultima_posicao + 1):
         print(i, '-', self.valores[i])
 
+  # BigO => O(n)
   def insere(self, valor):
     if self.ultima_posicao == self.capacidade - 1:
       print('Capacidade máxima atingida.')
@@ -35,6 +36,18 @@ class VetorNaoOrdenado:
     self.valores[posicao] = valor
     self.ultima_posicao += 1
 
+  # BigO => O(n)
+  def pesquisar(self, valor):
+    for i in range(self.ultima_posicao + 1):
+      if self.valores[i] > valor:
+        return -1
+      
+      if self.valores[i] == valor:
+        return i
+
+      if i == self.ultima_posicao:
+        return -1
+
 
 vetor = VetorNaoOrdenado(5)
 
@@ -44,3 +57,7 @@ vetor.insere(8)
 vetor.insere(9)
 vetor.insere(1)
 vetor.imprime()
+
+print(vetor.pesquisar(9))
+print(vetor.pesquisar(11)) # pior caso: não existe no vetor.
+print(vetor.pesquisar(1)) # # melhor caso: na primeira posição.
