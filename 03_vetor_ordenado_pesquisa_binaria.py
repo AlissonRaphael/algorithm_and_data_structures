@@ -37,16 +37,33 @@ class VetorNaoOrdenado:
     self.ultima_posicao += 1
 
   # BigO => O(n)
-  def pesquisar(self, valor):
+  def pesquisa_linear(self, valor):
     for i in range(self.ultima_posicao + 1):
       if self.valores[i] > valor:
         return -1
-      
+
       if self.valores[i] == valor:
         return i
 
       if i == self.ultima_posicao:
         return -1
+
+  # BigO => O(log(n))
+  def pesquisa_binaria(self, valor):
+    limite_inferior = 0
+    limite_superior = self.ultima_posicao
+
+    while True:
+      posicao_atual = int((limite_inferior+limite_superior)/2)
+      if valor == self.valores[posicao_atual]:
+        return posicao_atual
+      elif limite_inferior > limite_superior:
+        return -1
+      else:
+        if valor > self.valores[posicao_atual]:
+          limite_inferior = posicao_atual + 1
+        elif valor < self.valores[posicao_atual]:
+          limite_superior = posicao_atual - 1
 
   # BigO => O(n)
   def excluir(self, valor):
@@ -60,19 +77,21 @@ class VetorNaoOrdenado:
       self.ultima_posicao -= 1
 
 
-vetor = VetorNaoOrdenado(5)
+vetor = VetorNaoOrdenado(10)
 
 vetor.insere(2)
 vetor.insere(3)
 vetor.insere(8)
 vetor.insere(9)
 vetor.insere(1)
+vetor.insere(11)
+vetor.insere(17)
+vetor.insere(6)
+vetor.insere(13)
+vetor.insere(5)
 vetor.imprime()
 
-print(vetor.pesquisar(9))
-print(vetor.pesquisar(11)) # pior caso: não existe no vetor.
-print(vetor.pesquisar(1)) # # melhor caso: na primeira posição.
-
-vetor.excluir(3)
-vetor.imprime()
-print(vetor.excluir(13))
+print(vetor.pesquisa_binaria(1))
+print(vetor.pesquisa_binaria(11))
+print(vetor.pesquisa_binaria(5))
+print(vetor.pesquisa_binaria(10))
