@@ -37,6 +37,7 @@ class Deque:
       print('O deque está cheio.')
       return
 
+    # Verificar se está vazio.
     if self.inicio == -1:
       self.inicio = 0
       self.final = 0
@@ -44,4 +45,39 @@ class Deque:
     elif self.final == self.__capacidade - 1:
       self.final = 0
     else:
-      self.
+      self.final += 1
+
+    self.valores[self.final] = valor
+
+  def excluir_inicio(self):
+    if self.__deque_vazio():
+      print('O deque já está vazio')
+      return
+
+    # Verificar se possui apenas um elemento.
+    if self.inicio == self.final:
+      self.inicio = -1
+      self.final = -1
+    else:
+      # Voltar para posição inicial
+      if self.inicio == self.__capacidade-1:
+        self.inicio = 0
+      else:
+        self.inicio += 1
+    
+  def excluir_final(self):
+    if self.__deque_vazio():
+      print('O deque já está vazio')
+      return
+
+    # Verificar se possui apenas um elemento.
+    if self.inicio == self.final:
+      self.inicio = -1
+      self.final = -1
+    else:
+      # Voltar para posição inicial
+      if self.final == 0:
+        self.final = -1
+      else:
+        self.inicio -= -1
+
