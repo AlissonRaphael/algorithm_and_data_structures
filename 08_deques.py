@@ -14,3 +14,34 @@ class Deque:
 
   def __deque_vazio(self):
     return self.inicio == -1
+
+  def insere_inicio(self, valor):
+    if self.__deque_cheio():
+      print('O deque está cheio.')
+      return
+
+    # Verificar se está vazio.
+    if self.inicio == -1:
+      self.inicio = 0
+      self.final = 0
+    # Verificar se o inicio está na primeira posição
+    elif self.inicio == 0:
+      self.inicio = self.__capacidade - 1
+    else:
+      self.inicio -= 1
+
+    self.valores[self.inicio] = valor
+
+  def insere_final(self,valor):
+    if self.__deque_cheio():
+      print('O deque está cheio.')
+      return
+
+    if self.inicio == -1:
+      self.inicio = 0
+      self.final = 0
+    # Verificar se o final está na ultima posição
+    elif self.final == self.__capacidade - 1:
+      self.final = 0
+    else:
+      self.
