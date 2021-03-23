@@ -51,7 +51,7 @@ class Deque:
 
   def excluir_inicio(self):
     if self.__deque_vazio():
-      print('O deque já está vazio')
+      print('O deque está vazio.')
       return
 
     # Verificar se possui apenas um elemento.
@@ -67,17 +67,26 @@ class Deque:
     
   def excluir_final(self):
     if self.__deque_vazio():
-      print('O deque já está vazio')
+      print('O deque está vazio.')
       return
 
     # Verificar se possui apenas um elemento.
     if self.inicio == self.final:
       self.inicio = -1
       self.final = -1
+    elif self.inicio == 0:
+      self.final = self.__capacidade - 1
     else:
-      # Voltar para posição inicial
-      if self.final == 0:
-        self.final = -1
-      else:
-        self.inicio -= -1
+        self.final -= -1
 
+  def imprime_primeiro(self):
+    if self.__deque_vazio():
+      return 'O deque está vazio.'
+      
+    return self.valores[self.inicio]
+
+  def imprime_ultimo(self):
+    if self.__deque_vazio():
+      return 'O deque está vazio.'
+
+    return self.valores[self.final]
