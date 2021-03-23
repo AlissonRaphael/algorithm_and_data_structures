@@ -21,21 +21,20 @@ class FilaCircular:
       return
 
     if self.final == self.__capacidade - 1:
-      self.final -= 1
+      self.final = -1
 
     self.final += 1
     self.valores[self.final] = valor
     self.numero_elementos += 1
 
-  def desenfileirar(self, valor):
-    if self.__fila_vazia:
-      print('A fila está vazia.')
-      return
+  def desenfileirar(self):
+    if self.__fila_vazia():
+      return 'A fila está vazia.'
 
     temp = self.valores[self.inicio]
     self.inicio += 1
 
-    if self.inicio == self.__capacidade -1:
+    if self.inicio == self.__capacidade - 1:
       self.inicio = 0
 
     self.numero_elementos -= 1
@@ -45,3 +44,21 @@ class FilaCircular:
     if self.__fila_vazia():
       return -1
     return self.valores[self.inicio]
+
+
+fila = FilaCircular(5)
+
+fila.enfileirar(1)
+fila.enfileirar(2)
+fila.enfileirar(3)
+fila.enfileirar(4)
+fila.enfileirar(5)
+
+print(fila.primeiro())
+print(fila.desenfileirar())
+print(fila.desenfileirar())
+
+fila.enfileirar(6)
+fila.enfileirar(7)
+
+print(fila.primeiro())
