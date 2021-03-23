@@ -15,3 +15,14 @@ class FilaCircular:
   def __fila_cheia(self):
     return self.numero_elementos == self.__capacidade
 
+  def enfileirar(self, valor):
+    if self.__fila_cheia():
+      print('A fila está cheia.')
+      return
+
+    if self.final == self.__capacidade - 1:
+      self.final -= 1
+
+    self.final += 1
+    self.valores[self.final] = valor
+    self.numero_elementos += 1
