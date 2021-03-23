@@ -77,7 +77,7 @@ class Deque:
     elif self.inicio == 0:
       self.final = self.__capacidade - 1
     else:
-        self.final -= -1
+        self.final -= 1
 
   def imprime_primeiro(self):
     if self.__deque_vazio():
@@ -90,3 +90,23 @@ class Deque:
       return 'O deque está vazio.'
 
     return self.valores[self.final]
+
+
+deque = Deque(5)
+deque.insere_final(5)
+deque.insere_final(10)
+print(deque.valores)
+print(f'Primeiro: {deque.imprime_primeiro()}, Ultimo: {deque.imprime_ultimo()}')
+
+deque.insere_inicio(3)
+deque.insere_inicio(2)
+deque.insere_inicio(11)
+print(deque.valores)
+print(f'Primeiro: {deque.imprime_primeiro()}, Ultimo: {deque.imprime_ultimo()}')
+
+deque.insere_inicio(43)
+
+deque.excluir_inicio()
+deque.excluir_final()
+print(deque.valores)
+print(f'Primeiro: {deque.imprime_primeiro()}, Ultimo: {deque.imprime_ultimo()}')
