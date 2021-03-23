@@ -32,6 +32,14 @@ class FilaPrioridade:
 
       self.valores[x+1] = valor
       self.numero_elementos += 1
+  
+  def desenfileirar(self):
+    if self.__fila_vazia():
+      return 'A fila está vazia.'
+
+    valor = self.valores[self.numero_elementos-1]
+    self.numero_elementos -= 1
+    return valor
 
   def primeiro(self):
     if self.__fila_vazia():
