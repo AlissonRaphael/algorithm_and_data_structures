@@ -13,6 +13,26 @@ class FilaPrioridade:
   def __fila_cheia(self):
     return self.numero_elementos == self.__capacidade
 
+  def enfileirar(self, valor):
+    if self.__fila_cheia():
+      print('A fila está cheia.')
+      return
+
+    if self.numero_elementos == 0:
+      self.valores[self.numero_elementos] = valor
+      self.numero_elementos += 1
+    else:
+      x = self.numero_elementos - 1
+      while x >= 0:
+        if valor > self.valores[x]:
+          self.valores[x+1] = self.valores[x]
+        else:
+          break
+        x -= 1
+
+      self.valores[x+1] = valor
+      self.numero_elementos += 1
+
   def primeiro(self):
     if self.__fila_vazia():
       return -1
