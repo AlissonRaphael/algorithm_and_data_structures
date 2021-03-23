@@ -26,3 +26,22 @@ class FilaCircular:
     self.final += 1
     self.valores[self.final] = valor
     self.numero_elementos += 1
+
+  def desenfileirar(self, valor):
+    if self.__fila_vazia:
+      print('A fila está vazia.')
+      return
+
+    temp = self.valores[self.inicio]
+    self.inicio += 1
+
+    if self.inicio == self.__capacidade -1:
+      self.inicio = 0
+
+    self.numero_elementos -= 1
+    return temp
+
+  def primeiro(self):
+    if self.__fila_vazia():
+      return -1
+    return self.valores[self.inicio]
