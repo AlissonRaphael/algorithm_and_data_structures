@@ -29,6 +29,21 @@ class ListaEncadeada:
       atual.mostra_no()
       atual = atual.proximo
 
+  def pesquisar(self, valor):
+    if self.primeiro == None:
+      print('A lista está vazia.')
+      return None
+
+    atual = self.primeiro
+    while atual.valor != valor:
+      if atual.proximo == None:
+        print('Valor não encontrado.')
+        return None
+      else:
+        atual = atual.proximo
+
+    return atual
+
   def exclui_inicio(self):
     if self.primeiro == None:
       print('A lista está vazia.')
