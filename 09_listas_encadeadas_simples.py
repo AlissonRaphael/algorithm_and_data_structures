@@ -37,7 +37,6 @@ class ListaEncadeada:
     atual = self.primeiro
     while atual.valor != valor:
       if atual.proximo == None:
-        print('Valor não encontrado.')
         return None
       else:
         atual = atual.proximo
@@ -52,3 +51,40 @@ class ListaEncadeada:
     temp = self.primeiro
     self.primeiro = self.primeiro.proximo
     return temp
+
+  def exclui_posicao(self, valor):
+    if self.primeiro == None:
+      print('A lista está vazia.')
+      return None
+
+    atual = self.primeiro
+    anterior = self.primeiro
+
+    while atual.valor != valor:
+      if atual.proximo == None:
+        return None
+      else:
+        anterior = atual
+        atual = atual.proximo
+
+    if atual == self.primeiro:
+      self.primeiro = self.primeiro.proximo
+    else:
+      anterior.proximo = atual.proximo
+
+    return atual
+
+
+lista = ListaEncadeada()
+lista.insere_inicio(1)
+lista.insere_inicio(2)
+lista.insere_inicio(3)
+lista.insere_inicio(4)
+lista.insere_inicio(5)
+lista.mostrar()
+
+pesquisa = lista.pesquisar(1)
+if pesquisa == None:
+  print('Não encontrado.')
+else:
+  print(f'Encontrado: {pesquisa.valor}')
