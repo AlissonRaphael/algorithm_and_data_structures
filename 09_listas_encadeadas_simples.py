@@ -20,7 +20,20 @@ class ListaEncadeada:
     self.primeiro = novo
 
   def mostrar(self):
+    if self.primeiro == None:
+      print('A lista está vazia.')
+      return None
+
     atual = self.primeiro
     while atual != None:
       atual.mostra_no()
       atual = atual.proximo
+
+  def exclui_inicio(self):
+    if self.primeiro == None:
+      print('A lista está vazia.')
+      return None
+
+    temp = self.primeiro
+    self.primeiro = self.primeiro.proximo
+    return temp
