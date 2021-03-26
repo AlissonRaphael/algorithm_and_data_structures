@@ -20,4 +20,13 @@ class ListaDuplamenteEncadeada:
   def __lista_vazia(self):
     return self.primeiro == None
 
-  
+  def insere_inicio(self, valor):
+    novo = No(valor)
+    if self.__lista_vazia():
+      self.ultimo = novo
+    else:
+      self.primeiro.anterior = novo
+    
+    novo.proximo = self.primeiro
+    self.primeiro = novo
+
