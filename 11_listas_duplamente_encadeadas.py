@@ -30,3 +30,14 @@ class ListaDuplamenteEncadeada:
     novo.proximo = self.primeiro
     self.primeiro = novo
 
+  def mostrar_frente(self):
+    atual = self.primeiro
+    while atual != None:
+      atual.mostra_no()
+      atual = atual.proximo
+
+  def mostrar_traz(self):
+    atual = self.ultimo
+    while atual != None:
+      atual.mostrar_no()
+      atual = atual.anterior
