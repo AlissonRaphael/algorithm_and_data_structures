@@ -16,7 +16,7 @@ class ListaEncadeadaExtremidadeDupla:
 
   def __lista_vazia(self):
     return self.primeiro == None
-  
+
   def insere_inicio(self, valor):
     novo = No(valor)
     if self.__lista_vazia():
@@ -58,13 +58,14 @@ class ListaEncadeadaExtremidadeDupla:
     return atual
 
   def exclui_inicio(self):
-    if self.primeiro == None:
+    if self.__lista_vazia():
       print('A lista está vazia.')
       return None
 
     temp = self.primeiro
+    if self.primeiro.proximo == None:
+      self.ultimo = None
     self.primeiro = self.primeiro.proximo
-    return temp
 
   def exclui_posicao(self, valor):
     if self.primeiro == None:
@@ -104,3 +105,7 @@ if pesquisa == None:
   print('Não encontrado.')
 else:
   print(f'Encontrado: {pesquisa.valor}')
+
+lista.exclui_inicio()
+lista.exclui_inicio()
+lista.mostrar()
