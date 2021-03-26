@@ -9,17 +9,23 @@ class No:
     print(self.valor)
 
 
-class ListaEncadeada:
+class ListaEncadeadaExtremidadeDupla:
   def __init__(self):
     self.primeiro = None
+    self.ultimo = None
+
+  def __lista_vazia(self, valor):
+    return self.primeiro == None
   
   def insere_inicio(self, valor):
     novo = No(valor)
+    if self.__lista_vazia():
+      self.ultimo = novo
     novo.proximo = self.primeiro
     self.primeiro = novo
 
   def mostrar(self):
-    if self.primeiro == None:
+    if self.__lista_vazia():
       print('A lista está vazia.')
       return None
 
@@ -29,7 +35,7 @@ class ListaEncadeada:
       atual = atual.proximo
 
   def pesquisar(self, valor):
-    if self.primeiro == None:
+    if self.__lista_vazia():
       print('A lista está vazia.')
       return None
 
@@ -74,7 +80,7 @@ class ListaEncadeada:
     return atual
 
 
-lista = ListaEncadeada()
+lista = ListaEncadeadaExtremidadeDupla()
 lista.insere_inicio(1)
 lista.insere_inicio(2)
 lista.insere_inicio(3)
