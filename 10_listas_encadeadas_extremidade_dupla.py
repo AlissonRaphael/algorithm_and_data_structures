@@ -14,7 +14,7 @@ class ListaEncadeadaExtremidadeDupla:
     self.primeiro = None
     self.ultimo = None
 
-  def __lista_vazia(self, valor):
+  def __lista_vazia(self):
     return self.primeiro == None
   
   def insere_inicio(self, valor):
@@ -23,6 +23,15 @@ class ListaEncadeadaExtremidadeDupla:
       self.ultimo = novo
     novo.proximo = self.primeiro
     self.primeiro = novo
+
+  def insere_final(self, valor):
+    novo = No(valor)
+    if self.__lista_vazia():
+      self.primeiro = novo
+    else:
+      self.ultimo.proximo = novo
+
+    self.ultimo = novo
 
   def mostrar(self):
     if self.__lista_vazia():
@@ -81,11 +90,13 @@ class ListaEncadeadaExtremidadeDupla:
 
 
 lista = ListaEncadeadaExtremidadeDupla()
-lista.insere_inicio(1)
-lista.insere_inicio(2)
-lista.insere_inicio(3)
-lista.insere_inicio(4)
-lista.insere_inicio(5)
+lista.insere_final(1)
+lista.insere_final(2)
+lista.insere_final(3)
+lista.mostrar()
+
+lista.insere_inicio(0)
+lista.insere_final(4)
 lista.mostrar()
 
 pesquisa = lista.pesquisar(1)
