@@ -51,6 +51,26 @@ class ListaDuplamenteEncadeada:
       atual.mostrar_no()
       atual = atual.anterior
 
+  def excluir_inicio(self):
+    temp = self.primeiro
+    if self.primeiro.proximo == None:
+      self.ultimo = None
+    else:
+      self.primeiro.proximo.anterior = None
+
+    self.primeiro = self.primeiro.proximo
+    return temp
+
+  def excluir_final(self):
+    temp = self.ultimo
+    if self.primeiro.proximo == None:
+      self.primeiro = None
+    else:
+      self.ultimo.anterior.proximo = None
+
+    self.ultimo = self.ultimo.anterior
+    return temp
+
 
 lista = ListaDuplamenteEncadeada()
 lista.insere_inicio(1)
@@ -58,5 +78,10 @@ lista.insere_final(2)
 lista.insere_final(3)
 lista.insere_inicio(0)
 lista.insere_final(4)
+lista.mostrar_frente()
+lista.mostrar_traz()
+
+lista.excluir_inicio()
+lista.excluir_final()
 lista.mostrar_frente()
 lista.mostrar_traz()
