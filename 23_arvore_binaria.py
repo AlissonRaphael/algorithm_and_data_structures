@@ -11,6 +11,7 @@ class No:
 class ArvoreBinariaBusca:
   def __init__(self):
     self.raiz = None
+    self.ligacoes = []
 
   def inserir(self, valor):
     novo = No(valor)
@@ -28,11 +29,13 @@ class ArvoreBinariaBusca:
           atual = atual.esquerda
           if atual == None:
             pai.esquerda = novo
+            self.ligacoes.append(f'  {pai.valor} -> {novo.valor}')
             return
         else:
           atual = atual.direita
           if atual == None:
             pai.direita = novo
+            self.ligacoes.append(f'  {pai.valor} -> {novo.valor}')
             return
 
 
@@ -52,3 +55,11 @@ arvore.inserir(79)
 
 print(arvore.raiz.esquerda.valor)
 print(arvore.raiz.direita.valor)
+
+# string para gerar a visualização com o GraphViz.
+for i in range(len(arvore.ligacoes)):
+  if i == 0:
+    print('digraph g{')
+  print(arvore.ligacoes[i])
+  if i == len(arvore.ligacoes)-1:
+    print('}')
