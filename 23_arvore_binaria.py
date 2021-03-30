@@ -38,6 +38,9 @@ class ArvoreBinariaBusca:
             self.ligacoes.append(f'  {pai.valor} -> {novo.valor}')
             return
 
+  def pesquisa(self, valor):
+    #function search
+
 
 arvore = ArvoreBinariaBusca()
 arvore.inserir(53)
