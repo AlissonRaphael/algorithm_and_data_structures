@@ -38,7 +38,7 @@ class ArvoreBinariaBusca:
             self.ligacoes.append(f'  {pai.valor} -> {novo.valor}')
             return
 
-  def pesquisar(self,valor):
+  def pesquisar(self, valor):
     atual = self.raiz
 
     while atual.valor != valor:
@@ -52,7 +52,7 @@ class ArvoreBinariaBusca:
     return atual
 
   # Raiz, esquerda, direita
-  def pre_ordem(self,no):
+  def pre_ordem(self, no):
     if no != None:
       print(no.valor, end=' ')
       self.pre_ordem(no.esquerda)
@@ -69,6 +69,36 @@ class ArvoreBinariaBusca:
       self.pos_ordem(no.esquerda)
       self.pos_ordem(no.direita)
       print(no.valor, end=' ')
+
+  def excluir(self, valor):
+    if self.raiz == None:
+      print('A árvore está vazia.')
+      return
+    
+    atual = self.raiz
+    pai = self.raiz
+    e_esquerda = True
+    while atual.valor != valor:
+      pai = atual
+      if valor < atual.valor:
+        e_esquerda = True
+        atual = atual.esquerda
+      else:
+        e_esquerda = False
+        atual = atual.direita
+      if atual == None:
+        return False
+
+    # Nó a ser apagado é uma folha
+    if atual.esquerda == None and atual.direita == None:
+      if atual == self.raiz:
+        self.raiz = None
+      elif e_esquerda:
+        self.ligacoes.remove(f'  {pai.valor} -> {atual.valor}')
+        pai.esquerda = None
+      else:
+        self.ligacoes.remove(f'  {pai.valor} -> {atual.valor}')
+        pai.direita = None
 
 
 arvore = ArvoreBinariaBusca()
@@ -105,3 +135,18 @@ print('')
 arvore.em_ordem(arvore.raiz)
 print('')
 arvore.pos_ordem(arvore.raiz)
+
+for i in range(len(arvore.ligacoes)):
+  if i == 0:
+    print('digraph g{')
+  print(arvore.ligacoes[i])
+  if i == len(arvore.ligacoes)-1:
+    print('}')
+
+arvore.excluir(9)
+for i in range(len(arvore.ligacoes)):
+  if i == 0:
+    print('digraph g{')
+  print(arvore.ligacoes[i])
+  if i == len(arvore.ligacoes)-1:
+    print('}')
