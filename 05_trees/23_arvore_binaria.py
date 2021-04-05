@@ -38,6 +38,19 @@ class ArvoreBinariaBusca:
             self.ligacoes.append(f'  {pai.valor} -> {novo.valor}')
             return
 
+  def pesquisar(self,valor):
+    atual = self.raiz
+
+    while atual.valor != valor:
+      if valor < atual.valor:
+        atual = atual.esquerda
+      else:
+        atual = atual.direita
+      if atual == None:
+        return None
+
+    return atual
+
 
 arvore = ArvoreBinariaBusca()
 arvore.inserir(53)
@@ -63,3 +76,8 @@ for i in range(len(arvore.ligacoes)):
   print(arvore.ligacoes[i])
   if i == len(arvore.ligacoes)-1:
     print('}')
+
+
+print(arvore.pesquisar(39))
+print(arvore.pesquisar(84))
+print(arvore.pesquisar(100))
