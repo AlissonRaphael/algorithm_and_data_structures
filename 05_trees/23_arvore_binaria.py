@@ -64,6 +64,12 @@ class ArvoreBinariaBusca:
       print(no.valor, end=' ')
       self.em_ordem(no.direita)
 
+  def pos_ordem(self, no):
+    if no != None:
+      self.pos_ordem(no.esquerda)
+      self.pos_ordem(no.direita)
+      print(no.valor, end=' ')
+
 
 arvore = ArvoreBinariaBusca()
 arvore.inserir(53)
@@ -97,3 +103,5 @@ print(arvore.pesquisar(100))
 arvore.pre_ordem(arvore.raiz)
 print('')
 arvore.em_ordem(arvore.raiz)
+print('')
+arvore.pos_ordem(arvore.raiz)
