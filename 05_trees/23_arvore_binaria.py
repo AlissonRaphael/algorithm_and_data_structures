@@ -51,11 +51,18 @@ class ArvoreBinariaBusca:
 
     return atual
 
+  # Raiz, esquerda, direita
   def pre_ordem(self,no):
     if no != None:
-      print(no.valor)
+      print(no.valor, end=' ')
       self.pre_ordem(no.esquerda)
       self.pre_ordem(no.direita)
+
+  def em_ordem(self, no):
+    if no != None:
+      self.em_ordem(no.esquerda)
+      print(no.valor, end=' ')
+      self.em_ordem(no.direita)
 
 
 arvore = ArvoreBinariaBusca()
@@ -88,3 +95,5 @@ print(arvore.pesquisar(84))
 print(arvore.pesquisar(100))
 
 arvore.pre_ordem(arvore.raiz)
+print('')
+arvore.em_ordem(arvore.raiz)
