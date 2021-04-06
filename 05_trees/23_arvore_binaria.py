@@ -70,6 +70,19 @@ class ArvoreBinariaBusca:
       self.pos_ordem(no.direita)
       print(no.valor, end=' ')
 
+  def obter_sucessor(self, no):
+    pai_sucessor = no
+    sucessor = no
+    atual = no.direita
+    while atual != None:
+      pai_sucessor = sucessor
+      sucessor = atual
+      atual = atual.esquerda
+    if sucessor != no.direita:
+      pai_sucessor.esquerda = sucessor.direita
+      sucessor.direita = no.direita
+    return sucessor
+
   def excluir(self, valor):
     if self.raiz == None:
       print('A árvore está vazia.')
