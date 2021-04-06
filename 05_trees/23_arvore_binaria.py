@@ -99,6 +99,32 @@ class ArvoreBinariaBusca:
       else:
         self.ligacoes.remove(f'  {pai.valor} -> {atual.valor}')
         pai.direita = None
+    # Nó a ser apagado não possui filho a direita
+    elif atual.direita == None:
+      self.ligacoes.remove(f'  {pai.valor} -> {atual.valor}')
+      self.ligacoes.remove(f'  {atual.valor} -> {atual.esquerda.valor}')
+      if atual == self.raiz:
+        self.raiz = atual.esquerda
+        self.ligacoes.append(f'  {self.raiz.valor} -> {atual.esquerda.valor}')
+      elif e_esquerda == True:
+        pai.esquerda = atual.esquerda
+        self.ligacoes.append(f'  {pai.valor} -> {atual.esquerda.valor}')
+      else:
+        pai.direita = atual.esquerda
+        self.ligacoes.append(f'  {pai.valor} -> {atual.esquerda.valor}')
+    # Nó a ser apagado não possui filho a esquerda
+    elif atual.esquerda == None:
+      self.ligacoes.remove(f'  {pai.valor} -> {atual.valor}')
+      self.ligacoes.remove(f'  {atual.valor} -> {atual.direita.valor}')
+      if atual == self.raiz:
+        self.raiz = atual.direita
+        self.ligacoes.append(f'  {self.raiz.valor} -> {atual.direita.valor}')
+      elif e_esquerda == True:
+        pai.esquerda = atual.direita
+        self.ligacoes.append(f'  {pai.valor} -> {atual.direita.valor}')
+      else:
+        pai.direita = atual.direita
+        self.ligacoes.append(f'  {pai.valor} -> {atual.direita.valor}')
 
 
 arvore = ArvoreBinariaBusca()
@@ -144,6 +170,14 @@ for i in range(len(arvore.ligacoes)):
     print('}')
 
 arvore.excluir(9)
+for i in range(len(arvore.ligacoes)):
+  if i == 0:
+    print('digraph g{')
+  print(arvore.ligacoes[i])
+  if i == len(arvore.ligacoes)-1:
+    print('}')
+
+arvore.excluir(84)
 for i in range(len(arvore.ligacoes)):
   if i == 0:
     print('digraph g{')
