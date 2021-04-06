@@ -1,8 +1,7 @@
 # Python Data Structure and Algorithms
 
-![GitHub](https://img.shields.io/github/license/AlissonRaphael/algorithm_and_data_structures)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mypy)
-
+[![GitHub](https://img.shields.io/github/license/AlissonRaphael/statistics_for_data_science_and_machine_learning)](https://github.com/AlissonRaphael/statistics_for_data_science_and_machine_learning/blob/main/LICENSE)
+[![Maintaner](https://img.shields.io/badge/Python-3.6-blue)](https://www.python.org/downloads/windows/)
 
 This repository contains a series of algorithms: graphs, trees, linked lists, ordering, stacks, rows, decks, etc. implemented in python and without libraries.
 
@@ -55,4 +54,4 @@ Clone this repo to your local machine using `https://github.com/AlissonRaphael/p
 
 ## License
 
-![GitHub](https://img.shields.io/github/license/AlissonRaphael/python_exercises)
+[![GitHub](https://img.shields.io/github/license/AlissonRaphael/statistics_for_data_science_and_machine_learning)](https://github.com/AlissonRaphael/statistics_for_data_science_and_machine_learning/blob/main/LICENSE)
