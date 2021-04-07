@@ -138,6 +138,29 @@ class ArvoreBinariaBusca:
       else:
         pai.direita = atual.direita
         self.ligacoes.append(f'  {pai.valor} -> {atual.direita.valor}')
+    # Nó posssui dois filhos
+    else:
+      sucessor = self.obter_sucessor(atual)
+      self.ligacoes.remove(f'  {pai.valor} -> {atual.valor}')
+      self.ligacoes.remove(f'  {atual.direita.valor} -> {sucessor.valor}')
+      self.ligacoes.remove(f'  {atual.valor} -> {atual.esquerda.valor}')
+      self.ligacoes.remove(f'  {atual.valor} -> {atual.direita.valor}')
+
+      if atual == self.raiz:
+        self.raiz == sucessor
+        self.ligacoes.append(f'  {self.raiz.valor} -> {sucessor.valor}')
+      elif e_esquerda == True:
+        self.ligacoes.append(f'  {pai.valor} -> {sucessor.valor}')
+        pai.esquerda = sucessor
+      else:
+        self.ligacoes.append(f'  {pai.valor} -> {sucessor.valor}')
+        pai.direita = sucessor
+
+      self.ligacoes.append(f'  {sucessor.valor} -> {atual.esquerda.valor}')
+      self.ligacoes.append(f'  {sucessor.valor} -> {atual.direita.valor}')
+
+      sucessor.esquerda = atual.esquerda
+      return True
 
 
 arvore = ArvoreBinariaBusca()
