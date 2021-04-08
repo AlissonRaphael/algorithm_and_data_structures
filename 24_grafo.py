@@ -10,3 +10,10 @@ class Vertice:
   def mostra_adjacente(self):
     for adjacente in self.adjacentes:
       print(adjacente.vertice.rotulo, adjacente.custo)
+
+
+class Adjacente:
+  def __init__(self, vertice, custo):
+    self.vertice = vertice
+    self.custo = custo
+
