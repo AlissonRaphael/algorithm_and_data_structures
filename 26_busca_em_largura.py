@@ -130,6 +130,28 @@ class FilaCircular:
         return self.valores[self.inicio]
 
 
+class BuscaLargura:
+  def __init__(self, inicio):
+    self.inicio = inicio
+    self.inicio.visitado = True
+    self.fila = FilaCircular(20)
+    self.fila.enfileirar(inicio)
+
+  def buscar(self):
+    primeiro = self.fila.primeiro()
+    print(f'--------------------\nPrimeiro da fila: {primeiro.rotulo}')
+    temp = self.fila.desenfileirar()
+    print(f'Desenfileirou: {temp.rotulo}')
+    for adjacente in primeiro.adjacentes:
+      print(f'Primeiro era {temp.rotulo}. {adjacente.vertice.rotulo} já foi visitado? {adjacente.vertice.visitado}')
+      if adjacente.vertice.visitado == False:
+        adjacente.vertice.visitado = True
+        self.fila.enfileirar(adjacente.vertice)
+        print('Enfileirou: {}'.format(adjacente.vertice.rotulo))
+    if self.fila.numero_elementos > 0:
+      self.buscar()
+
+
 grafo = Grafo()
 grafo.arad.mostra_adjacente()
 
@@ -140,3 +162,7 @@ fila.enfileirar(grafo.timisoara)
 print(fila.primeiro().rotulo)
 fila.desenfileirar()
 print(fila.primeiro().rotulo)
+
+
+busca = BuscaLargura(grafo.arad)
+busca.buscar()
