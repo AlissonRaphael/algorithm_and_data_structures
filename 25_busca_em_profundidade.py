@@ -84,6 +84,27 @@ class Grafo:
   bucharest.adiciona_adjacente(Adjacente(giurgiu, 90))
 
 
+class BuscaProfundidade:
+  def __init__(self, inicio):
+    self.inicio = inicio
+    self.inicio.visitado = True
+    self.pilha = Pilha(20)
+    self.pilha.empilhar(inicio)
+
+  def buscar(self):
+    topo = self.pilha.ver_topo()
+    print(f'Topo: {topo.rotulo}')
+    for adjacente in topo.adjacentes:
+      print(f'Topo é {topo.rotulo}. {adjacente.vertice.rotulo} já foi visitada? {adjacente.vertice.visitado}')
+      if adjacente.vertice.visitado == False:
+        adjacente.vertice.visitado = True
+        self.pilha.empilhar(adjacente.vertice)
+        print(f'Empilhou {adjacente.vertice.rotulo}')
+        self.buscar()
+    print(f'Desempilhou: {self.pilha.desempilhar().rotulo}')
+    print()
+
+
 class Pilha:
   def __init__(self, capacidade):
     self.__capacidade = capacidade
@@ -138,3 +159,8 @@ pilha.empilhar(grafo.timisoara)
 print(pilha.ver_topo().rotulo)
 pilha.desempilhar()
 print(pilha.ver_topo().rotulo)
+
+
+print('-'*20)
+busca = BuscaProfundidade(grafo.arad)
+busca.buscar()
