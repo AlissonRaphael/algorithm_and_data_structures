@@ -118,6 +118,30 @@ class VetorOrdenado:
                 print(i, ' - ', self.valores[i].rotulo, ' - ', self.valores[i].distancia_objetivo)
 
 
+class BuscaGulosa:
+  def __init__(self, objetivo):
+    self.objetivo = objetivo
+    self.encontrado = False
+
+  def buscar(self, atual):
+    print('-------')
+    print(f'Atual: {atual.rotulo}')
+    atual.visitado = True
+
+    if atual == self.objetivo:
+      self.encontrado = True
+    else:
+      vetor_ordenado = VetorOrdenado(len(atual.adjacentes))
+      for adjacente in atual.adjacentes:
+        if adjacente.vertice.visitado == False:
+          adjacente.vertice.visitado == True
+          vetor_ordenado.insere(adjacente.vertice)
+      vetor_ordenado.imprime()
+
+      if vetor_ordenado.valores[0] != None:
+        self.buscar(vetor_ordenado.valores[0])
+
+
 grafo = Grafo()
 grafo.arad.mostra_adjacente()
 
@@ -128,3 +152,6 @@ vetor.insere(grafo.bucharest)
 vetor.insere(grafo.dobreta)
 
 vetor.imprime()
+
+busca = BuscaGulosa(grafo.bucharest)
+busca.buscar(grafo.arad)
