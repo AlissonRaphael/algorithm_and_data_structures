@@ -120,6 +120,29 @@ class VetorOrdenado:
               print(f'{i} - {aux.vertice.rotulo} - {aux.custo} - {aux.vertice.distancia_objetivo} - {aux.distancia_aestrela}')
 
 
+class BuscaAEstrela:
+  def __init__(self, objetivo):
+    self.objetivo = objetivo
+    self.encontrado = False
+
+  def buscar(self, atual):
+    print('------------------------------\nAtual: {}'.format(atual.rotulo))
+    atual.visitado = True
+
+    if atual == self.objetivo:
+      self.encontrado = True
+    else:
+      vetor_ordenado = VetorOrdenado(len(atual.adjacentes))
+      for adjacente in atual.adjacentes:
+        if adjacente.vertice.visitado == False:
+          adjacente.vertice.visitado = True
+          vetor_ordenado.insere(adjacente)
+      vetor_ordenado.imprime()
+
+      if vetor_ordenado.valores[0] != None:
+        self.buscar(vetor_ordenado.valores[0].vertice)
+
+
 grafo = Grafo()
 
 vetor = VetorOrdenado(3)
@@ -127,3 +150,6 @@ vetor.insere(grafo.arad.adjacentes[0])
 vetor.insere(grafo.arad.adjacentes[1])
 vetor.insere(grafo.arad.adjacentes[2])
 vetor.imprime()
+
+busca_aestrela = BuscaAEstrela(grafo.bucharest)
+busca_aestrela.buscar(grafo.arad)
