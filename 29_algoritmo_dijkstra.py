@@ -1,4 +1,5 @@
 import numpy as np
+import sys
 
 vertices = {'arad':0,'zerind':1,'oradea':2,'sibiu':3,'timisoara':4,
             'lugoj':5,'mehadia':6,'dobreta':7,'craiova':8,'rimnicu':9,
@@ -56,4 +57,22 @@ arestas[vertices['bucharest'], vertices['fagaras']] = 211
 arestas[vertices['bucharest'], vertices['pitesti']] = 101
 arestas[vertices['bucharest'], vertices['giurgiu']] = 90
 
-print(arestas[vertices['arad'], vertices['sibiu']])
+class Dijkstra:
+  def __init__(self, vertices, arestas, inicio):
+    self.tamanho = len(vertices)
+    self.vertices = vertices
+    self.grafo = arestas
+    self.inicio = inicio
+
+  def mostra_solucao(self, distancias):
+    print('Menores distâncias de {} até todos os outros'.format(self.vertices[self.inicio]))
+    for vertice in range(self.tamanho):
+      print(self.vertices[vertice], distancias[vertice])
+
+  def distancia_minima(self, distancia, visitados):
+    minimo = sys.maxsize
+    for vertice in range(self.tamanho):
+      if distancia[vertice] < minimo and visitados[vertice] == False:
+        minimo = distancia[vertice]
+        indice_minimo = vertice
+    return indice_minimo
