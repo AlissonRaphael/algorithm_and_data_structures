@@ -76,3 +76,21 @@ class Dijkstra:
         minimo = distancia[vertice]
         indice_minimo = vertice
     return indice_minimo
+
+  def dijkstra(self):
+    distancia = [sys.maxsize] * self.tamanho
+    distancia[self.inicio] = 0
+    visitados = [False] * self.tamanho
+
+    for _ in range(self.tamanho):
+      indice_minimo = self.distancia_minima(distancia, visitados)
+      visitados[indice_minimo] = True
+      for vertice in range(self.tamanho):
+        if self.grafo[indice_minimo][vertice] > 0 and visitados[vertice] == False \
+            and distancia[vertice] > distancia[indice_minimo] + self.grafo[indice_minimo][vertice]:
+          distancia[vertice] = distancia[indice_minimo] + self.grafo[indice_minimo][vertice]
+
+    self.mostra_solucao(distancia)
+
+dijkstra = Dijkstra(cidades, arestas, vertices['arad'])
+dijkstra.dijkstra()
