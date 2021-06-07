@@ -5,6 +5,9 @@
 
 This repository contains a series of algorithms: graphs, trees, linked lists, ordering, stacks, rows, decks, etc. implemented in python and without libraries.
 
+![](https://github.com/AlissonRaphael/algorithm_and_data_structures/blob/main/readme-python-logo.jpg)
+![](https://github.com/AlissonRaphael/algorithm_and_data_structures/blob/main/readme-numpy-logo.jpg)
+
 ## Contents
 - [Installation](#installation)
 - [Contact](#contact)
